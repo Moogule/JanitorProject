@@ -6,45 +6,50 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    public float player_speed =5f;
+    public float player_speed = 5f;
     public float player_deceleration = 0.9f;
+    public float jump_height = 20f;
 
     public GameObject player;
+    public GameObject cam;
     Rigidbody rb;
-
-    private float horizontalInput;
-    private float verticalInput;
-    Vector3 movement_Direction;
-
     
 
-    private void FixedUpdate()
-    {
-        if (movement_Direction != Vector3.zero)
-        {
-            //rb.AddForce(movement_Direction * player_speed * Time.fixedDeltaTime, ForceMode.Impulse);
-            rb.velocity = movement_Direction * player_speed;
-        }
-        else
-            rb.velocity = Vector3.zero;
-        
-        
-        rb.rotation = Quaternion.Euler(0f, rb.rotation.eulerAngles.y, 0f);
-    }
+    Vector3 movement_Direction;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         rb = player.GetComponentInChildren<Rigidbody>();
+        //cam = player.GetComponentInChildren<Camera>();
     }
+
+
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("HA: " + horizontalInput + ", VA: " + verticalInput);
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
 
-        movement_Direction = new Vector3(horizontalInput, 0f,verticalInput).normalized;
+        //gets the input direction from the predefined set buttons in project settings and sets them as a vector
+        movement_Direction = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")) * player_speed;// a value between -1 and 1 for the two axis
+        movement_Direction.y = rb.velocity.y;
+        rb.velocity = movement_Direction;//setting the rb velocity to the movement direction * the speed of the player
+
+        rb.rotation = Quaternion.Euler(0f, rb.rotation.eulerAngles.y, 0f);//this quaternion thing somehow prevents the player from tipping over lol no one rlly explained it to me
+
+
+        //jump
+        //TODO need to add jump cool down 
+        if(Input.GetAxis("Jump") >0)
+        {
+            rb.AddForce(0f, jump_height,0f);
+        }
+
+
+        //CAMERA MOVEMENT
+        //cam.transform.position = rb.position.x;
+
     }
 }
