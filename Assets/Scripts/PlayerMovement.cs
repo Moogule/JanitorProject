@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float player_deceleration = 0.9f;
     public float jump_height = 20f;
 
+    public GroundDetection GD; //Script in the player rigidbody that returns if the player is grounded
     public GameObject player;
     public GameObject cam;
     Rigidbody rb;
@@ -17,15 +18,12 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 movement_Direction;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
         rb = player.GetComponentInChildren<Rigidbody>();
         //cam = player.GetComponentInChildren<Camera>();
     }
-
 
 
     // Update is called once per frame
@@ -38,11 +36,11 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = movement_Direction;//setting the rb velocity to the movement direction * the speed of the player
 
         rb.rotation = Quaternion.Euler(0f, rb.rotation.eulerAngles.y, 0f);//this quaternion thing somehow prevents the player from tipping over lol no one rlly explained it to me
-
+        Debug.Log("The player is grounded: " + GD.getGrounded());
 
         //jump
         //TODO need to add jump cool down 
-        if(Input.GetAxis("Jump") >0)
+        if(Input.GetAxis("Jump") >0 && GD.getGrounded())
         {
             rb.AddForce(0f, jump_height,0f);
         }
