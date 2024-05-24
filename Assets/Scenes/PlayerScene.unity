@@ -192,6 +192,7 @@ Transform:
   m_Children:
   - {fileID: 1292389612}
   - {fileID: 2110325010}
+  - {fileID: 1561830015}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &270380869
@@ -211,7 +212,8 @@ MonoBehaviour:
   jump_height: 20
   GD: {fileID: 1292389614}
   player: {fileID: 270380867}
-  cam: {fileID: 0}
+  cam: {fileID: 1561830014}
+  cam_speed: 500
 --- !u!1 &1270067263
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,12 +1240,12 @@ Transform:
   m_GameObject: {fileID: 1561830014}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 39.83527, y: 2.5356908, z: 35.993126}
+  m_LocalPosition: {x: 1.0252686, y: 1.1056908, z: -3.4268723}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1701868343}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 270380868}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1561830016
 MonoBehaviour:
@@ -1596,6 +1598,5 @@ SceneRoots:
   - {fileID: 1270067265}
   - {fileID: 270380868}
   - {fileID: 193010675}
-  - {fileID: 1561830015}
   - {fileID: 1595653902}
   - {fileID: 1375775018}

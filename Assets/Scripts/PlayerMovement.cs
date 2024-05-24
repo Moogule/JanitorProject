@@ -14,7 +14,10 @@ public class PlayerMovement : MonoBehaviour
     public GameObject player;
     public GameObject cam;
     Rigidbody rb;
-    
+
+    private float mouse_X;
+    private float mouse_Y;
+    public float cam_speed = 500.0f;
 
     Vector3 movement_Direction;
 
@@ -22,7 +25,6 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = player.GetComponentInChildren<Rigidbody>();
-        //cam = player.GetComponentInChildren<Camera>();
     }
 
 
@@ -49,5 +51,11 @@ public class PlayerMovement : MonoBehaviour
         //CAMERA MOVEMENT
         //cam.transform.position = rb.position.x;
 
+
+        //if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
+        mouse_X = Input.GetAxis("Mouse X") * Time.deltaTime * cam_speed;
+        mouse_Y = Input.GetAxis("Mouse Y") * Time.deltaTime * cam_speed;
+        //transform.Rotate(Vector3.right, mouse_Y);
+        transform.Rotate(Vector3.up, mouse_X, Space.World);
     }
 }
