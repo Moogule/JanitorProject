@@ -14,10 +14,17 @@ public class PlayerMovement : MonoBehaviour
     public Transform player;
     public Transform playerObject;
     public Rigidbody rb;
-    public float rot_speed = 7.0f;
 
     public float player_speed = 5f;
     public float groundDrag;
+
+    private bool readyToJump = true;
+    public float jumpForce;
+    public float jumpCooldown;//in seconds
+    public float airMultiplier;
+
+    [Header("KeyBinds")]
+    public KeyCode jump = KeyCode.Space;
 
     [Header("Ground Detection")]
     public float playerHeight;
@@ -28,11 +35,6 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = player.GetComponentInParent<Rigidbody>();
-        rb.freezeRotation = true;
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 
 
@@ -41,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //ground check (said zestily)
         isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + .2f, whatIsGround);
+        Debug.Log("Is the player grounded");
 
         //drag controller
         if (isGrounded)
@@ -48,44 +51,64 @@ public class PlayerMovement : MonoBehaviour
         else
             rb.drag = 0;
 
-        //rotate orientation
-        Vector3 viewDirection = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
-        orientation.forward = viewDirection.normalized;
 
-        //rotate player object
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-        Vector3 inputDirection = orientation.forward *verticalInput + orientation.right * horizontalInput;
+    }
 
-        if(inputDirection != Vector3.zero)
+    private void MyInput()
+    {
+        if (Input.GetKey(jump) && isGrounded && readyToJump)
         {
-            playerObject.forward = Vector3.Slerp(playerObject.forward, inputDirection.normalized, Time.deltaTime * rot_speed);
+            readyToJump = false;
+            Jump();
+            Invoke(nameof(ResetJump),jumpCooldown);
         }
-
     }
 
     private void FixedUpdate()
     {
-        //movePlayer();
+        MyInput();
+        movePlayer();
         speedControl();
+    }
+
+    private void Jump()
+    {
+        //reset the y velocity 
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+    }
+
+    private void ResetJump()
+    {
+        readyToJump = true;
     }
 
     private void movePlayer()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");//POTENTIAL AREA OF LAG I THINK
+        float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         Vector3 moveDirection = orientation.forward *verticalInput + orientation.right * horizontalInput;
 
-        rb.AddForce(moveDirection.normalized *  player_speed * 10f , ForceMode.Force);
+        if(isGrounded)
+            rb.AddForce(moveDirection.normalized *  player_speed * 10f , ForceMode.Force);
+        else if(!isGrounded)
+            rb.AddForce(moveDirection.normalized * player_speed * 10f * airMultiplier, ForceMode.Force);
     }
 
     void speedControl()
     {
+        //this is the currect horizontal velocity of the player
         Vector3 flatVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
+        //basically if the player is going faster than we want, just force the velocity to be what we want it to be
         if(flatVelocity.magnitude > player_speed)
         {
+            //this is the current velocity that has been normalized and then multiplied by the player speed
+            //basically turning this into 1 * player_speed since normalizing a value changes it into a value between 0 and 1.
             Vector3 limitedVelocity = flatVelocity.normalized*player_speed; 
+
+            //applying the velocity
             rb.velocity = new Vector3(limitedVelocity.x ,rb.velocity.y, limitedVelocity.z);
         }
     }
