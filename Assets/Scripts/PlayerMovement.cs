@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private bool readyToJump = true;
     public float jumpForce;
     public float jumpCooldown;//in seconds
-    public float airMultiplier;
+    public float airMultiplier;//speed change for in air like in csgo
 
     [Header("KeyBinds")]
     public KeyCode jump = KeyCode.Space;
