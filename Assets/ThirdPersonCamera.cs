@@ -8,11 +8,18 @@ public class ThirdPersonCamera : MonoBehaviour
     //very good and understandable code for movement and camera
     [Header("References")]
     public Transform orientation;
+    public Transform combatLookAt;
     public Transform player;
     public Transform playerObject;
     public Rigidbody rb;
     public float rot_speed = 7.0f;
 
+    public CameraStyle currentStyle;
+
+    public enum CameraStyle { 
+        basic,
+        combat
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -33,14 +40,25 @@ public class ThirdPersonCamera : MonoBehaviour
         orientation.forward = viewDirection;
         //Debug.Log("Orientation direction is " + orientation.forward);
 
-        //rotate player object
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-        Vector3 inputDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-
-        if (inputDirection != Vector3.zero)
+        if (currentStyle == CameraStyle.basic)
         {
-            playerObject.forward = Vector3.Slerp(playerObject.forward, inputDirection.normalized, Time.deltaTime * rot_speed);
+            //rotate player object
+            float horizontalInput = Input.GetAxis("Horizontal");
+            float verticalInput = Input.GetAxis("Vertical");
+            Vector3 inputDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+
+            if (inputDirection != Vector3.zero)
+            {
+                playerObject.forward = Vector3.Slerp(playerObject.forward, inputDirection.normalized, Time.deltaTime * rot_speed);
+            }
+        }
+
+        else if(currentStyle == CameraStyle.combat)
+        {
+            Vector3 combatDirection = combatLookAt.position - new Vector3(transform.position.x, combatLookAt.position.y, transform.position.z);
+            orientation.forward = combatDirection.normalized;
+
+            playerObject.forward = combatDirection.normalized;
         }
 
     }

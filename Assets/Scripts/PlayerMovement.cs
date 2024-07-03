@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("KeyBinds")]
     public KeyCode jump = KeyCode.Space;
+    public KeyCode sprint = KeyCode.LeftShift;
 
     [Header("Ground Detection")]
     public float playerHeight;
@@ -89,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         Vector3 moveDirection = orientation.forward *verticalInput + orientation.right * horizontalInput;
-
+        
         if(isGrounded)
             rb.AddForce(moveDirection.normalized *  player_speed * 10f , ForceMode.Force);
         else if(!isGrounded)
