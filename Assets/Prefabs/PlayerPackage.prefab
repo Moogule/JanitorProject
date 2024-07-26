@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7961697446398944968}
   - component: {fileID: 418709187595717117}
   - component: {fileID: 2712895456607247953}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HealthPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 809296847994732904}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.016445821, y: 0.07349261, z: 0.0012120893, w: 0.9971594}
+  m_LocalRotation: {x: -0.01644585, y: 0.07349261, z: 0.0012120913, w: 0.9971594}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -321,7 +321,7 @@ GameObject:
   - component: {fileID: 4664649600001933359}
   - component: {fileID: 5321131989239453639}
   - component: {fileID: 2655102358783849675}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -905,7 +905,7 @@ GameObject:
   - component: {fileID: 8400357568384473244}
   - component: {fileID: 3582980239753640}
   - component: {fileID: 5487648922627210367}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: glasses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1007,7 +1007,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7697296290197459212}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1043,7 +1043,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3037340139759896484}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerPackage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1081,7 +1081,7 @@ GameObject:
   - component: {fileID: 8210751653600457379}
   - component: {fileID: 4747063716191066289}
   - component: {fileID: 7187693143351164266}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1157,7 +1157,7 @@ GameObject:
   - component: {fileID: 2600050914808214171}
   - component: {fileID: 2464492373721354986}
   - component: {fileID: 3075549476580651600}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerStatsCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1257,7 +1257,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5795902748054650017}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: orientation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1377,7 +1377,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3927333072571046408}
   - component: {fileID: 905751057626736511}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1482,7 +1482,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3105010535238641044}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.01644582, y: 0.07349258, z: 0.0012120889, w: 0.9971594}
+  m_LocalRotation: {x: -0.016445845, y: 0.07349258, z: 0.0012120907, w: 0.9971594}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1552,7 +1552,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2240629189127692612}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1675,7 +1675,7 @@ GameObject:
   - component: {fileID: 30685476874652879}
   - component: {fileID: 2502365861247217071}
   - component: {fileID: 5265581949871026683}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1823,7 +1823,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4732872522712187589}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.00419627, y: 0.07350192, z: -0.00030927322, w: 0.9972862}
+  m_LocalRotation: {x: 0.0041962694, y: 0.07350192, z: -0.0003092732, w: 0.9972862}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1893,7 +1893,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1898029823442205454}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: combatLookAt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1927,7 +1927,7 @@ GameObject:
   - component: {fileID: 226226242010142905}
   - component: {fileID: 7033570265631264871}
   - component: {fileID: 4553760445739697328}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: playerObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2517,7 +2517,7 @@ GameObject:
   - component: {fileID: 4161758593445100814}
   - component: {fileID: 2160561683145241140}
   - component: {fileID: 7065614685921336157}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MoneyText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2654,7 +2654,7 @@ GameObject:
   - component: {fileID: 5823755378355540112}
   - component: {fileID: 2010033163147362821}
   - component: {fileID: 7323393139467834614}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
