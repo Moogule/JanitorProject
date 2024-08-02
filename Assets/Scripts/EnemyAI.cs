@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    public NavMeshAgent agent;
+    [HideInInspector]public NavMeshAgent agent;
 
     public string playerGameObjectName;
     public Transform player;
@@ -69,6 +69,7 @@ public class EnemyAI : MonoBehaviour
 
         if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))//sends a ray under the enemy to see if there is ground where they would walk to, if so set walkpointset = true
         {
+            Debug.Log("Enemy is on the ground");
             walkPointSet = true;
         }
     }
