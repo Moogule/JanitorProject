@@ -81,7 +81,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Attack() {
         agent.SetDestination(transform.position);
-        transform.LookAt(player);
+        transform.LookAt(player);//TRY AND CHANGE THIS LOCKED AT Y AXIS
 
         if (!hasAttacked)
         {
