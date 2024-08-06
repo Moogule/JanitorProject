@@ -10,11 +10,11 @@ using UnityEngine.UIElements;
 public class PlayerStatistics : MonoBehaviour
 {
     [SerializeField] PlayerMovement pm;
+    [SerializeField] healthSystem HS;
     [SerializeField] UnityEngine.UI.Slider health_slider;
     [SerializeField] TMP_Text dollar_Text;
 
     [Header("Player Stats")]
-    public float health = 100;
     public float speed;
     public float attack_speed;
     public int dollars;
@@ -22,28 +22,14 @@ public class PlayerStatistics : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health_slider.maxValue = health;
+        health_slider.maxValue = HS.maxHealth;
         health_slider.value = health_slider.maxValue;
     }
 
     private void FixedUpdate()
     {
-        health_slider.value = health;
+        health_slider.value = HS.health;
         dollar_Text.text = "$ " + dollars;
-    }
-
-    public void takeDamage(float damage)
-    {
-        if (health - damage > 0)
-        {
-            health -= damage;
-            health_slider.value = health - damage;
-        }
-        else
-        {
-            health_slider.value = 0;
-            die();
-        }
     }
 
     public void addMoney(int amount)
@@ -54,10 +40,5 @@ public class PlayerStatistics : MonoBehaviour
     public void removeMoney(int amount)
     {
         dollars -= amount;
-    }
-
-    public void die()
-    {
-        Destroy(gameObject);
     }
 }

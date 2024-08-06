@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     //used code from https://www.youtube.com/@davegamedevelopment
     //very good and understandable code for movement and camera
     [Header("References")]
+    [SerializeField] PlayerStatistics PS;
     public Transform orientation;
     public Transform player;
     public Transform playerObject;
@@ -30,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Ground Detection")]
     public float playerHeight;
     public LayerMask whatIsGround;
-    bool isGrounded;
+    public bool isGrounded;
 
 
     // Start is called before the first frame update
@@ -42,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        player_speed = PS.speed;
         //ground check (said zestily)
         isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + .2f, whatIsGround);
         Debug.Log("Is the player grounded");
@@ -92,9 +94,9 @@ public class PlayerMovement : MonoBehaviour
         Vector3 moveDirection = orientation.forward *verticalInput + orientation.right * horizontalInput;
         
         if(isGrounded)
-            rb.AddForce(moveDirection.normalized *  player_speed * 10f , ForceMode.Force);
+            rb.AddForce(moveDirection.normalized *  player_speed , ForceMode.Impulse);
         else if(!isGrounded)
-            rb.AddForce(moveDirection.normalized * player_speed * 10f * airMultiplier, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * player_speed * airMultiplier, ForceMode.Impulse);
     }
 
     void speedControl()

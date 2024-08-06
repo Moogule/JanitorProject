@@ -81,7 +81,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Attack() {
         agent.SetDestination(transform.position);
-        transform.LookAt(player);//TRY AND CHANGE THIS LOCKED AT Y AXIS
+        transform.LookAt(player,transform.up);//TRY AND CHANGE THIS LOCKED AT Y AXIS
 
         if (!hasAttacked)
         {
@@ -90,7 +90,7 @@ public class EnemyAI : MonoBehaviour
             Rigidbody rb = Instantiate(projectile,transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
             rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-
+            Destroy(rb.gameObject, 1f);
             hasAttacked = true;
             Invoke(nameof(ResetAttack), attackSpeed);
         }
