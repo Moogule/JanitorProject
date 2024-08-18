@@ -1,4 +1,4 @@
-public abstract class CombinationWeapon : WeaponBase
+public abstract class HybridWeapon : WeaponBase
 {
     private bool isRangedMode;
 
