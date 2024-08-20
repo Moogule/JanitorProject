@@ -105,8 +105,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 809296847994732904}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.01644585, y: 0.07349261, z: 0.0012120913, w: 0.9971594}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.02004163, y: -0.5096622, z: -0.011876463, w: 0.8600592}
+  m_LocalPosition: {x: 11.964638, y: -1.3127241, z: -14.858116}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -145,7 +145,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 45
+  field of view: 50
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -249,7 +249,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 863394961090835965}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.037010577, y: 0.073452175, z: 0.00272776, w: 0.996608}
+  m_LocalRotation: {x: -0.03701055, y: 0.073452055, z: 0.0027277532, w: 0.9966081}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1482,7 +1482,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3105010535238641044}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.016445845, y: 0.07349258, z: 0.0012120907, w: 0.9971594}
+  m_LocalRotation: {x: -0.016445845, y: 0.07349261, z: 0.0012120912, w: 0.9971594}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1823,7 +1823,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4732872522712187589}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0041962694, y: 0.07350192, z: -0.0003092732, w: 0.9972862}
+  m_LocalRotation: {x: 0.0041962774, y: 0.073501915, z: -0.00030927372, w: 0.9972862}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2050,7 +2050,7 @@ Transform:
   m_GameObject: {fileID: 6691748606287042387}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.20113754, y: 0.3127241, z: -7.2729187}
+  m_LocalPosition: {x: 18.791, y: -0.059999943, z: -7.2729187}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2654,6 +2654,7 @@ GameObject:
   - component: {fileID: 5823755378355540112}
   - component: {fileID: 2010033163147362821}
   - component: {fileID: 7323393139467834614}
+  - component: {fileID: 6092723951023780618}
   m_Layer: 6
   m_Name: player
   m_TagString: Untagged
@@ -2670,7 +2671,7 @@ Transform:
   m_GameObject: {fileID: 8185537316974496919}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.20113754, y: -0.6272758, z: -0.57291794}
+  m_LocalPosition: {x: 18.791, y: -1, z: -0.57291794}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2717,6 +2718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cfa9e871e25aad43a206b6d5093e438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PS: {fileID: 7323393139467834614}
   orientation: {fileID: 5795902748054650017}
   player: {fileID: 6147120758864420548}
   playerObject: {fileID: 2592241585532152209}
@@ -2732,6 +2734,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
+  isGrounded: 0
 --- !u!114 &7323393139467834614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2741,16 +2744,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 8185537316974496919}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9c1d248311b345469b89fab27774ca6, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f23a481711fdec41a1b53819de70bf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pm: {fileID: 2010033163147362821}
-  health_slider: {fileID: 905751057626736511}
-  dollar_Text: {fileID: 7065614685921336157}
-  health: 100
-  speed: 0
+  playerMovement: {fileID: 2010033163147362821}
+  healthSystem: {fileID: 6092723951023780618}
+  healthBar: {fileID: 905751057626736511}
+  dollarText: {fileID: 5265581949871026683}
+  speed: 7
   attack_speed: 0
   dollars: 0
+--- !u!114 &6092723951023780618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8185537316974496919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9f70ee7d5ac9964bba68c846cd4a5a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  maxHealth: 100
+  regenRate: 1
+  onHealthChange:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8292582507469935873
 GameObject:
   m_ObjectHideFlags: 3
