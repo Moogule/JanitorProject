@@ -16,6 +16,6 @@ public class brickofdeath : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("YO THIS SHIT HAPPENING B IM COLLIDING WITH ANOTHER GAMEOBJECT!! HELP");
-        collision.gameObject.GetComponent<healthSystem>().takeDamage(10);
+        collision.gameObject.GetComponent<HealthSystem>().TakeDamage(10);
     }
 }

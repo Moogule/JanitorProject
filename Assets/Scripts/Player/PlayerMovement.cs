@@ -10,13 +10,13 @@ public class PlayerMovement : MonoBehaviour
     //used code from https://www.youtube.com/@davegamedevelopment
     //very good and understandable code for movement and camera
     [Header("References")]
-    [SerializeField] PlayerStatistics PS;
+    [SerializeField] PlayerStats PS;
     public Transform orientation;
     public Transform player;
     public Transform playerObject;
     public Rigidbody rb;
 
-    public float player_speed = 5f;
+    public float player_speed;
     public float groundDrag;
 
     private bool readyToJump = true;
@@ -37,8 +37,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    }
 
+    }
 
     // Update is called once per frame
     void Update()
@@ -53,8 +53,6 @@ public class PlayerMovement : MonoBehaviour
             rb.drag = groundDrag;
         else
             rb.drag = 0;
-
-
     }
 
     private void MyInput()
