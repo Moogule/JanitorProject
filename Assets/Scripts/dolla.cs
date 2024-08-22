@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class dolla : MonoBehaviour
 {
-    [SerializeField] PlayerStats PS;
+    [SerializeField] PlayerStatistics PS;
 
     public int dollarValue;
 
@@ -18,7 +18,7 @@ public class dolla : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        PS.AddMoney(dollarValue);
+        PS.addMoney(dollarValue);
         Debug.Log("The player now has: " + PS.dollars);
         Destroy(gameObject);
     }
