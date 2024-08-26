@@ -2,7 +2,7 @@ public abstract class HybridWeapon : WeaponBase
 {
     private bool isRangedMode;
 
-    public override void SwitchMode()
+    public void SwitchMode()
     {
         isRangedMode = !isRangedMode;
         // Optionally, you could trigger some visual or audio feedback to indicate mode switch

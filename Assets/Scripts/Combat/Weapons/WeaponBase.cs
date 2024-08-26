@@ -5,8 +5,7 @@ public abstract class WeaponBase : Weapon
     public float fireRate;
     
     public abstract void Attack();
-    public abstract void Reload();
-    public abstract void SwitchMode();
+    public abstract void Reload(); 
 
     protected bool CanAttack()
     {
